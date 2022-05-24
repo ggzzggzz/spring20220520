@@ -101,7 +101,7 @@
 						 	`);
 						replyListElement.append(replyElement);
 						
-					} // end of for
+					}; // end of for
 					
 					$(".reply-modify-submit").click(function(e) {
 						e.preventDefault();
