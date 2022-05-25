@@ -4,6 +4,8 @@
 
 <c:url value="/board/list" var="listUrl"></c:url>
 <c:url value="/board/insert" var="insertUrl"></c:url>
+<c:url value="/member/signup" var="signupUrl"></c:url>
+<c:url value="/member/list" var="memberListUrl"></c:url>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
   <div class="container">
@@ -24,20 +26,30 @@
         <li class="nav-item">
           <a class="nav-link ${current == 'insert' ? 'active' : '' }" href="${insertUrl }">글쓰기</a>
         </li>
+        <!-- li.nav-item>a.nav-link{회원가입} -->
+        <li class="nav-item">
+        	<a href="${signupUrl }" class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
+        </li>
+        
+        <li class="nav-item">
+        	<a href="${memberListUrl }" class="nav-link ${current == 'memberList' ? 'active' : '' }">회원목록</a>
+        </li>
       </ul>
       
       <!-- form.d-flex>input.form-control.me-2[type=search]+button.btn.btn-outline-success -->
       
       <form action="${listUrl }" class="d-flex">
-      	<!-- select.form-select>option*2 -->
-      	<select name="type" id="" class="form-select">
-      		<option value="all" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>전체</option>
-      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-      		<option value="body" ${param.type == 'body' ? 'selected' : '' }>본문</option>
-      	</select>
-      
-      	<input type="search" class="form-control me-2" name="keyword" />
-      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+      	<div class="input-group">
+	      	<!-- select.form-select>option*2 -->
+	      	<select name="type" id="" class="form-select">
+	      		<option value="all" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>전체</option>
+	      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+	      		<option value="body" ${param.type == 'body' ? 'selected' : '' }>본문</option>
+	      	</select>
+	      
+	      	<input type="search" class="form-control me-2" name="keyword" />
+	      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+	  	</div>
       </form>
     </div>
   </div>
