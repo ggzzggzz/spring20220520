@@ -50,7 +50,7 @@
 		const listReply = function() {
 			
 			
-			const data = {boardId : ${board.id}}
+			const data = {boardId : ${board.id}};
 			$.ajax({
 				url : "${appRoot}/reply/list",
 				type : "get", 
@@ -72,10 +72,13 @@
 								<div class="fw-bold">
 									<i class="fa-solid fa-comment"></i> 
 									\${list[i].prettyInserted}
-								 	<span class="reply-edit-toggle-button badge bg-info text-dark" id="replyEditToggleButton\${list[i].id }" data-reply-id="\${list[i].id }" >
+								 	<span class="reply-edit-toggle-button badge bg-info text-dark" 
+								 		id="replyEditToggleButton\${list[i].id }" 
+								 		data-reply-id="\${list[i].id }" >
 								 		<i class="fa-solid fa-pen-to-square"></i>
 							 		</span>
-								 	<span class="reply-delete-button badge bg-danger" data-reply-id="\${list[i].id }">
+								 	<span class="reply-delete-button badge bg-danger" 
+								 		data-reply-id="\${list[i].id }">
 								 		<i class="fa-solid fa-trash-can"></i>
 								 	</span>
 								</div>
@@ -89,7 +92,8 @@
 									<div class="input-group">
 										<input type="hidden" name="boardId" value="${board.id }" />
 										<input type="hidden" name="id" value="\${list[i].id }" />
-										<input class="form-control" value="\${list[i].content }" type="text" name="content" required /> 
+										<input class="form-control" value="\${list[i].content }" 
+											type="text" name="content" required /> 
 										<button data-reply-id="\${list[i].id}" 
 												class="reply-modify-submit btn btn-outline-secondary">
 											<i class="fa-solid fa-comment-dots"></i>
@@ -125,6 +129,7 @@
 								
 								// 메세지 보여주기
 								$("#replyMessage1").show().text(data).fadeOut(3000);
+								
 								// 댓글 refresh
 								listReply();
 							},
@@ -262,8 +267,15 @@
 					</div>
 					
 					<div>
+						<label for="input3" class="form-label">작성자</label>
+						<input id="input3" class="form-control" type="text"
+							value="${board.writerNickName }" readonly />
+					</div>
+					
+					<div>
 						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control" type="datetime-local" value="${board.inserted }" readonly/>
+						<input class="form-control" type="datetime-local" 
+							value="${board.inserted }" readonly/>
 					</div> 
 					
 					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
