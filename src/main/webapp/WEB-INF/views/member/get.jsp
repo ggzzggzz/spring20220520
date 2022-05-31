@@ -182,8 +182,8 @@
 	
 	<div>
 	아이디 : <input type="text" value="${member.id }" readonly /> <br />
-	암호 : <input type="text" id="password" value="${member.password }" name="password" /> <br />
-	암호확인 : <input type="text" id="passwordConfirm" value="${member.password }" /> 
+	암호 : <input type="text" id="password" value="" name="password" /> <br />
+	암호확인 : <input type="text" id="passwordConfirm" value="" /> 
 	<p id="passwordMessage1"></p>
 	<br />
 	이메일 : <input type="email" id="email" name="email" value="${member.email }" /> 

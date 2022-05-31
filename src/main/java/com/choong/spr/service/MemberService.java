@@ -109,11 +109,18 @@ public class MemberService {
 			
 			// 암호 인코딩
 			dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-			
+			System.out.println(dto);
 			return mapper.updateMember(dto) == 1;
 		}
 		
 		return false;
+	}
+
+	public void initPassword(String id) {
+		
+		String pw = passwordEncoder.encode(id);
+		
+		mapper.updatePasswordById(id, pw);
 	}
 
 }
