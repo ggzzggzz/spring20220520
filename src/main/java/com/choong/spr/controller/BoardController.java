@@ -1,6 +1,7 @@
 package com.choong.spr.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,17 +46,25 @@ public class BoardController {
 	
 	@PostMapping("insert")
 	public String insert(BoardDto board, 
-			MultipartFile file, 
+			MultipartFile[] file, 
 			Principal principal,
 			RedirectAttributes rttr) {
-		System.out.println(principal.toString());
-		System.out.println(principal.getName()); // username
-		System.out.println(file);
+//		System.out.println(principal.toString());
+//		System.out.println(principal.getName()); // username
+//		System.out.println(file);
 //		System.out.println(file.getOriginalFilename());
-		System.out.println(file.getSize());
+//		System.out.println(file.getSize());
 		
-		if (file.getSize() > 0) {
-			board.setFileName(file.getOriginalFilename());
+//		if (file.getSize() > 0) {
+//			board.setFileName(file.getOriginalFilename());
+//		}
+		
+		if (file != null) {
+			List<String> fileList = new ArrayList<String>();
+			for (MultipartFile f : file) {
+				fileList.add(f.getOriginalFilename());
+			}
+			board.setFileName(fileList);
 		}
 		
 		board.setMemberId(principal.getName());
