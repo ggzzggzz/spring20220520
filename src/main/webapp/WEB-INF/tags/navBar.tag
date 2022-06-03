@@ -43,9 +43,11 @@
         </sec:authorize>
         
         <!-- li.nav-item>a.nav-link{회원가입} -->
-        <li class="nav-item">
-        	<a href="${signupUrl }" class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
-        </li>
+        <sec:authorize access="not isAuthenticated()">
+	        <li class="nav-item">
+	        	<a href="${signupUrl }" class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
+	        </li>
+        </sec:authorize>
         
         <sec:authorize access="isAuthenticated()">
         	<li class="nav-item">
@@ -72,7 +74,7 @@
         
         <sec:authorize access="isAuthenticated()">
 	        <li class="nav-item">
-	        	<button class="nav-link" type="submit" form="logoutForm1">로그아웃</button>
+	        	<button class="btn btn-link nav-link" type="submit" form="logoutForm1">로그아웃</button>
         	</li>
         </sec:authorize>
       </ul>
